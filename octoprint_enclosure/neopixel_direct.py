@@ -1,4 +1,5 @@
-from rpi_ws281x import *
+import board
+import neopixel
 import sys
 import time
 
@@ -17,14 +18,13 @@ else:
     print("fail")
     sys.exit(1)
 
-strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS)
-strip.begin()
+pixels = neopixel.NeoPixel(board.D18, LED_COUNT, auto_write=False, pixel_order=neopixel.RGBW)
 
-color = Color(red, green, blue)
+if red == green == blue:
+	pixels.fill((0,0,0,red))
+else:
+	pixels.fill((red,green,blue,0))
 
-for i in range(LED_COUNT):
-    strip.setPixelColor(i, color)
-
-strip.show()
+pixels.show()
 
 print("ok")
