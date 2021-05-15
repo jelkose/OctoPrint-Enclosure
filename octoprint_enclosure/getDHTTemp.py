@@ -15,8 +15,8 @@ import adafruit_dht as Adafruit_DHT
 
 dhtDev = Adafruit_DHT.DHT22(board.D4)
 
-humidity = dhtDev.temperature
-temperature = dhtDev.humidity
+humidity = dhtDev.humidity
+temperature = dhtDev.temperature
 
 if humidity is not None and temperature is not None:
     print('{0:0.1f} | {1:0.1f}'.format(temperature, humidity))
